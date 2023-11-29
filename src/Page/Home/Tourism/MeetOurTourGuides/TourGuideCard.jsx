@@ -4,7 +4,7 @@ import { MdAddCall } from "react-icons/md";
 
 
 const TourGuideCard = ({ tourGuide }) => {
-    const { name, img, email, experience, phone, designation } = tourGuide;
+    const { name, img, email, phone, designation } = tourGuide;
     return (
         <div className="p-8 space-y-5">
             <div className=" sm:flex  sm:space-x-6 dark:bg-gray-900 dark:text-gray-100">
@@ -28,10 +28,9 @@ const TourGuideCard = ({ tourGuide }) => {
                     </div>
                 </div>
             </div>
-
-            <div>
-                <p>{experience}</p>
-            </div>
+            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
+                Details
+            </button>
         </div>
 
     );

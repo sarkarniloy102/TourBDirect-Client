@@ -17,7 +17,7 @@ const PackageCard = ({ Package }) => {
       <div className="p-4">
         <p className="">{type}</p>
         <h3 className="text-lg font-semibold mt-1 mb-2">{title}</h3>
-        <p className=" mb-2">{price}tk</p>
+        <p className=" mb-2">Price: {price}tk</p>
         <button  className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
           View Package
         </button>

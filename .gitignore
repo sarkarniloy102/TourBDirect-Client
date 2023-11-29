@@ -11,8 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-travel.json
-tourguide.json
+
 
 # Editor directories and files
 .vscode/*
@@ -24,4 +23,6 @@ tourguide.json
 *.njsproj
 *.sln
 *.sw?
+travel.json
 
+.env.local
