@@ -1,7 +1,7 @@
 
 const Overview = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="md:col-span-1">
                 <h3 className="text-2xl font-bold mb-4">Welcome to Our Tourism Guide</h3>
                 <p className=" mb-4">
@@ -20,7 +20,7 @@ const Overview = () => {
                     title="Overview Video"
                     //   frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
+                    allowFullScreen
                 ></iframe>
             </div>
         </div>
