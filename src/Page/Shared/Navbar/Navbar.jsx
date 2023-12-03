@@ -15,7 +15,7 @@ const Navbar = () => {
             <li><Link to={"/community"}>Community</Link></li>
             <li><Link to={"/blogs"}>Blogs </Link></li>
             <li><Link to={"/aboutus"}>About Us</Link></li>
-            <li><Link to={"/contact"}>Contact Us</Link></li>
+            <li><Link to={"/contactus"}>Contact Us</Link></li>
 
         </>
     return (
