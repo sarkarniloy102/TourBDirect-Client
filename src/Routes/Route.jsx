@@ -7,6 +7,7 @@ import AllPackages from "../Page/AllPackages/AllPackages/AllPackages";
 import SinglePackageDetails from "../Page/AllPackages/SinglePackageDetails/SinglePackageDetails";
 import BookingForm from "../Page/AllPackages/SinglePackageDetails/BookingForm";
 import GuideProfile from "../Page/Home/Tourism/MeetOurTourGuides/GuideProfile";
+import Bookings from "../Page/AllPackages/SinglePackageDetails/MyBookings/Bookings";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
           path:"/guideProfile/:id",
           element: <GuideProfile></GuideProfile>,
           loader: ({params})=> fetch(`http://localhost:5000/tourguides/${params.id}`)
+        },
+        {
+          path:"/mybookings",
+          element: <Bookings></Bookings>
         }
       ]
     },

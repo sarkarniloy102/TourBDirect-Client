@@ -8,8 +8,13 @@ const BookingForm = () => {
     const tourguide = 'tourguides'
     const [tourGuides] = usePackage(tourguide);
 
+    const travelplace = 'allplace';
+    const [travelPlaces] = usePackage(travelplace);
+
     const [tourDate, setTourDate] = useState(null);
     const [tourGuide, setTourGuide] = useState('');
+    const [type, setType] = useState('');
+    const [title, setTitle] = useState('');
     const [touristDetails, setTouristDetails] = useState({
         Name: '',
         Email: '',
@@ -17,6 +22,8 @@ const BookingForm = () => {
         Price: '',
         tourDate: null,
         tourGuide: '',
+        type: '',
+        title: ''
     });
 
     const handleDateChange = date => {
@@ -34,6 +41,22 @@ const BookingForm = () => {
             tourGuide: event.target.value,
         }));
     };
+    // change category
+    const handleTypeChange = e => {
+        setType(e.target.value);
+        setTouristDetails(prevState => ({
+            ...prevState,
+            type: e.target.value,
+        }));
+    }
+    // change place
+    const handleTitleChange = e => {
+        setTitle(e.target.value);
+        setTouristDetails(prevState => ({
+            ...prevState,
+            title: e.target.value,
+        }));
+    }
 
     // tourist Input details
     const handleInputChange = event => {
@@ -86,7 +109,8 @@ const BookingForm = () => {
         });
         // console.log('Submitted Data:', { tourDate, tourGuide, touristDetails });
     };
-
+    //  distince category from allplace
+    const uniqueTypes = new Set();
     return (
 
         <div className='bg-white p-6'>
@@ -125,6 +149,48 @@ const BookingForm = () => {
                             </div>
 
                         </div>
+                        <div className='flex flex-col lg:flex-row gap-5'>
+                            {/* category type */}
+                            <div className="mb-4 w-1/2">
+                                <label className="block mb-2">Tour Category</label>
+                                <select value={type} onChange={handleTypeChange} className="border border-gray-300 rounded-md p-2 w-full">
+                                    <option value="">Select Tour Category</option>
+                                    {/* Populate dropdown options with tour guide names */}
+
+                                    {
+
+                                        travelPlaces.map((travelPlace, idx) => {
+                                            if (!uniqueTypes.has(travelPlace.type)) {
+                                                uniqueTypes.add(travelPlace.type);
+                                                return (
+                                                    <option key={idx} value={travelPlace.type}>
+                                                        {travelPlace.type}
+                                                    </option>
+                                                );
+                                            }
+                                            return null; // Skip rendering for duplicate types
+                                        })
+                                    }
+
+                                </select>
+                            </div>
+                            {/* category title */}
+                            <div className="mb-4">
+                                <label className="block mb-2">Tour Place</label>
+                                <select value={title} onChange={handleTitleChange} className="border border-gray-300 rounded-md p-2 w-full">
+                                    <option value="">Select Tour Place</option>
+                                    {/* Populate dropdown options with tour guide names */}
+                                    {
+                                        travelPlaces.map((travelPlace, idx) => (
+                                            <option key={idx} value={travelPlace.title}>{travelPlace.title}</option>
+                                        ))
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* tour guide */}
                         <div className="mb-4">
                             <label className="block mb-2">Tour Guide Name</label>
                             <select value={tourGuide} onChange={handleTourGuideChange} className="border border-gray-300 rounded-md p-2 w-full">

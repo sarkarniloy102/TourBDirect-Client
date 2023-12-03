@@ -29,7 +29,7 @@ const AllPackages = () => {
     return (
         <div>
             <div className="my-10">
-                <h2 className="text-5xl font-bold pl-5  lg:pl-10 w-full lg:w-1/3 lg:mx-auto mb-4">All Services</h2>
+                <h2 className="text-5xl font-bold pl-5  lg:pl-10 w-full lg:w-1/3 lg:mx-auto mb-4">All Packages</h2>
                 <div className="flex w-full lg:w-1/3 pl-5  mx-auto">
                     <input type="search"
                         name="Search"
@@ -39,11 +39,11 @@ const AllPackages = () => {
                         onChange={(e) => setSearchQuery(e.target.value)} />
                     <button type="button"
                         onClick={handleSearch}
-                        className="px-8 py-1 ml-3 font-semibold border rounded border-gray-100 text-gray-100 hover:bg-violet-400">Search</button>
+                        className="px-8 py-1 ml-3 font-semibold border rounded border-gray-100 text-gray-100 hover:bg-orange-500">Search</button>
                 </div>
 
 
-                <div className="grid grid-cols-1 lg:grid-cols-3   gap-5 ">
+                <div className="grid grid-cols-1 lg:grid-cols-3 mt-10  gap-5 ">
                     {filteredPackages?.map((Package, idx) => (
 
                         <PackageCard key={idx} Package={Package} />

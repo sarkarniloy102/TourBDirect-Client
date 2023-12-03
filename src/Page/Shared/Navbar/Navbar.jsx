@@ -39,8 +39,22 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user ? <>
-                        <span>{user?.displayName}</span>
-                        <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn ml-16">Dashboard</div>
+                            <div tabIndex={0} className=" dropdown-content z-[5] w-40 card card-compact  shadow bg-primary text-primary-content">
+                                <div className="card-body ">
+                                    <div className="text-lg font-bold flex flex-col">
+                                        <Link>Profile</Link>
+                                        <span className="text-xs">{user?.displayName}</span>
+                                    </div>
+
+                                    <Link to={"/mybookings"} className="text-lg font-medium ">My Bookings</Link>
+                                    <Link className="text-lg font-medium" onClick={handleLogOut} >LogOut</Link>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </> : <>
                         <Link className="btn btn-ghost" to="/login">Login/Register</Link>
                     </>
