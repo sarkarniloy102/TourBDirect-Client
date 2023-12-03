@@ -2,7 +2,8 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import usePackage from '../../../hooks/usePackage';
-
+import Swal from 'sweetalert2'
+import axios from 'axios';
 const BookingForm = () => {
     const tourguide = 'tourguides'
     const [tourGuides] = usePackage(tourguide);
@@ -13,15 +14,25 @@ const BookingForm = () => {
         Name: '',
         Email: '',
         Image: '',
-        Price: ''
+        Price: '',
+        tourDate: null,
+        tourGuide: '',
     });
 
     const handleDateChange = date => {
         setTourDate(date);
+        setTouristDetails(prevState => ({
+            ...prevState,
+            tourDate: date,
+        }));
     };
 
     const handleTourGuideChange = event => {
         setTourGuide(event.target.value);
+        setTouristDetails(prevState => ({
+            ...prevState,
+            tourGuide: event.target.value,
+        }));
     };
 
     // tourist Input details
@@ -33,7 +44,47 @@ const BookingForm = () => {
     const handleSubmit = event => {
         event.preventDefault();
         // Handle form submission, e.g., submit data to backend or perform necessary actions
-        console.log('Submitted Data:', { tourDate, tourGuide, touristDetails });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Confirm your Booking"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.post('http://localhost:5000/mybookings', touristDetails, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                    .then(res => {
+                        const data = res.data;
+                        console.log(data);
+                        if (data.insertedId) {
+                            Swal.fire({
+                                title: "Booked!",
+                                text: "Your book has been confirmed.",
+                                icon: "success"
+                            });
+                        }
+                        else {
+                            // Handle other scenarios or display an error message
+                            console.error('Failed to add service:', data.error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Failed to add service',
+                                icon: 'error',
+                                confirmButtonText: 'OK',
+                            });
+                        }
+                    })
+                    .catch(error => { console.log(error.message) })
+
+            }
+        });
+        // console.log('Submitted Data:', { tourDate, tourGuide, touristDetails });
     };
 
     return (
