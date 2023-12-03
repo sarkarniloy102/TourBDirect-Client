@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
+import useAxiosSecure from "./useAxiosSecure";
 
-
-const usePackage = () => {
-    const [Packages, setpackages] = useState([]);
+const usePackage = (path) => {
+    const AxiosSecure = useAxiosSecure();
+    const [packages, setPackages] = useState([]);
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
-        fetch('travel.json')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setpackages(data);
+        const fetchData = async () => {
+            try {
+                const response = await AxiosSecure.get(`/${path}`);
+                setPackages(response.data);
                 setLoading(false);
-            });
-    }, [])
-    // console.log(Package);
-    return [Packages, loading]
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [AxiosSecure,path]);
+
+    return [packages, loading];
 }
 
 export default usePackage;
-

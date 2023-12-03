@@ -1,48 +1,49 @@
 [
-    {
-      "name": "Mohammad Rahman",
-      "img": "mohammad_rahman.jpg",
-      "email": "mohammad.rahman@example.com",
-      "phone": "+8801234567890",
-      "language": "Bengali",
-      "experience": "Guiding tours for 5 years, specializing in cultural and historical tours. His deep knowledge and passion for showcasing the beauty of Bangladesh make him an excellent choice for your journey.",
-      "designation": "Senior Tour Guide"
-    },
-    {
-      "name": "Fatima Akhtar",
-      "img": "fatima_akhtar.jpg",
-      "email": "fatima.akhtar@example.com",
-      "phone": "+8809876543210",
-      "language": "Bengali",
-      "experience": "With 8 years of experience, is a specialist in cultural tours. She takes pride in providing insightful perspectives on the rich heritage and traditions of Bangladesh, ensuring an immersive experience for travelers.",
-      "designation": "Cultural Tour Specialist"
-    },
-    {
-      "name": "Aminul Islam",
-      "img": "aminul_islam.jpg",
-      "email": "aminul.islam@example.com",
-      "phone": "+8801122334455",
-      "language": "Bengali",
-      "experience": "An expert with 10 years of experience, excels in adventure tours. From trekking to exploring off-the-beaten-path locations, Aminul ensures an adrenaline-packed and memorable experience for adventurers.",
-      "designation": "Adventure Tour Expert"
-    },
-    {
-      "name": "Nusrat Jahan",
-      "img": "nusrat_jahan.jpg",
-      "email": "nusrat.jahan@example.com",
-      "phone": "+8809988776655",
-      "language": "Bengali",
-      "experience": "A heritage tour guide with 6 years of experience, is passionate about preserving and sharing the rich cultural history of Bangladesh. Join her to explore the fascinating heritage sites across the country.",
-      "designation": "Heritage Tour Guide"
-    },
-    {
-      "name": "Arif Ahmed",
-      "img": "arif_ahmed.jpg",
-      "email": "arif.ahmed@example.com",
-      "phone": "+8807766554433",
-      "language": "Bengali",
-      "experience": "With 7 years of experience, is your go-to guide for nature exploration. Whether it's birdwatching or trekking through scenic landscapes, Arif brings a deep appreciation for Bangladesh's natural beauty to every tour.",
-      "designation": "Nature Exploration Guide"
-    }
-  ]
-  
+  {
+    "name": "Mohammad Rahman",
+    "img": "https://i.ibb.co/cr25Snp/6.png",
+    "email": "mohammad.rahman@example.com",
+    "phone": "+8801234567890",
+    "language": "Bengali",
+    "experience": "Guiding tours for 5 years, specializing in cultural and historical tours. His deep knowledge and passion for showcasing the beauty of Bangladesh make him an excellent choice for your journey.",
+    "designation": "Senior Tour Guide"
+  },
+  {
+    "name": "Fatima Akhtar",
+    "img": "https://i.ibb.co/bdJYwHC/w2.png",
+    "email": "fatima.akhtar@example.com",
+    "phone": "+8809876543210",
+    "language": "Bengali",
+    "experience": "With 8 years of experience, is a specialist in cultural tours. She takes pride in providing insightful perspectives on the rich heritage and traditions of Bangladesh, ensuring an immersive experience for travelers.",
+    "designation": "Cultural Tour Specialist"
+  },
+  {
+    "name": "Aminul Islam",
+    "img": "https://i.ibb.co/PMB6Ypj/2.png",
+    "email": "aminul.islam@example.com",
+    "phone": "+8801122334455",
+    "language": "Bengali",
+    "experience": "An expert with 10 years of experience, excels in adventure tours. From trekking to exploring off-the-beaten-path locations, Aminul ensures an adrenaline-packed and memorable experience for adventurers.",
+    "designation": "Adventure Tour Expert"
+  },
+  {
+    "name": "Nusrat Jahan",
+    "img": "https://i.ibb.co/r37tTpX/3.png",
+    "email": "nusrat.jahan@example.com",
+    "phone": "+8809988776655",
+    "language": "Bengali",
+    "experience": "A heritage tour guide with 6 years of experience, is passionate about preserving and sharing the rich cultural history of Bangladesh. Join her to explore the fascinating heritage sites across the country.",
+    "designation": "Heritage Tour Guide"
+  },
+  {
+    "name": "Arif Ahmed",
+    "img": "https://i.ibb.co/Ldxm4Zn/4.png",
+    "email": "arif.ahmed@example.com",
+    "phone": "+8807766554433",
+    "language": "Bengali",
+    "experience": "With 7 years of experience, is your go-to guide for nature exploration. Whether it's birdwatching or trekking through scenic landscapes, Arif brings a deep appreciation for Bangladesh's natural beauty to every tour.",
+    "designation": "Nature Exploration Guide"
+  }
+]
+
+

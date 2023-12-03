@@ -6,15 +6,15 @@ const PackageCard = ({ Package }) => {
     console.log(type, title);
     return (
         
-        <div className="bg-slate-800 shadow-md rounded-md overflow-hidden">
+        <div className="bg-slate-800 shadow-md rounded-md overflow-hidden p-4">
       <div className="relative">
-        <img src={img} alt="Spot" className="w-full h-56 object-cover" />
+        <img src={img} alt="Spot" className="w-full h-56 object-cover  border  shadow-md rounded-md" />
         <button className="absolute top-2 right-2 text-red-500 hover:text-red-600">
         <FaHeart />
 
         </button>
       </div>
-      <div className="p-4">
+      <div className="pt-4">
         <p className="">{type}</p>
         <h3 className="text-lg font-semibold mt-1 mb-2">{title}</h3>
         <p className=" mb-2">Price: {price}tk</p>

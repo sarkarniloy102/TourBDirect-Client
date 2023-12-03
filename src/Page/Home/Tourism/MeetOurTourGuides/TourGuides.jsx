@@ -6,7 +6,7 @@ const TourGuides = () => {
     const [tourGuides, settourGuides] = useState([]);
     // const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('tourguide.json')
+        fetch('http://localhost:5000/tourguides')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
