@@ -29,7 +29,7 @@ const TourGuideCard = ({ tourGuide }) => {
                 </div>
             </div>
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md">
-                Details
+                Profile
             </button>
         </div>
 

@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
+
 import TourGuideCard from "./TourGuideCard";
+import usePackage from "../../../../hooks/usePackage";
 
 
 const TourGuides = () => {
-    const [tourGuides, settourGuides] = useState([]);
-    // const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        fetch('http://localhost:5000/tourguides')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                settourGuides(data);
-                // setLoading(false);
-            });
-    }, [])
+    const tourguide = 'tourguides'
+    const [tourGuides] = usePackage(tourguide);
     return (
         <div className=" py-8">
             <div className="container mx-auto">

@@ -1,16 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import TourGuides from "../../Home/Tourism/MeetOurTourGuides/TourGuides";
+
 
 
 const SinglePackageDetails = () => {
     const PackageDetails = useLoaderData();
     console.log(PackageDetails);
     const { type, img, title, price, details, tourPlan } = PackageDetails;
+
+
+
     return (
         <div>
             <section className="bg-gray-800 text-gray-100">
-                <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row gap-12">
-                    <div className="flex items-center  justify-center p-6 mt-8  h-72 sm:h-80 lg:h-96 ">
-                        <img src={img} alt="" className="object-contain h-72 sm:h-80 lg:h-96 border shadow-2xl rounded-md" />
+                <h2 className="text-center text-3xl p-4 text-blue-500">About Tour & Tour Plan</h2>
+                <div className="container flex flex-col  p-6 mx-auto lg:flex-row gap-12">
+                    <div className="flex items-center  justify-center p-6 mt-5  h-72 sm:h-80 lg:h-96 ">
+                        <img src={img} alt="" className="object-contain h-72 sm:h-80 lg:h-96 shadow-2xl rounded-md" />
                     </div>
                     <div className="flex flex-col justify-center pr-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                         <h1 className="text-4xl text-green-500 font-bold leadi ">{type}
@@ -36,12 +42,20 @@ const SinglePackageDetails = () => {
                         {/*  */}
                         <p className="mb-8 text-green-500 text-xl"> <span className=" text-green-700 ">Price :</span> BDT-{price} [1:1]</p>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-
-                            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-green-600 hover:bg-orange-500 dark:text-gray-900">Book Now</a>
-
+                            <Link to={'/bookingform'}
+                                className="px-8 py-3 text-lg font-semibold rounded bg-green-600 hover:bg-orange-500 text-gray-900"
+                               >
+                                Book Now
+                            </Link>
+                            
                         </div>
                     </div>
                 </div>
+                <div className="mt-8">
+                    <h2 className="text-center text-3xl text-blue-500">Tour Guids</h2>
+                    <TourGuides></TourGuides>
+                </div>
+
             </section>
         </div>
     );

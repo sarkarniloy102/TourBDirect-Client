@@ -5,6 +5,7 @@ import LogIn from "../LogIn/LogIn";
 import Register from "../Registration/Register";
 import AllPackages from "../Page/AllPackages/AllPackages/AllPackages";
 import SinglePackageDetails from "../Page/AllPackages/SinglePackageDetails/SinglePackageDetails";
+import BookingForm from "../Page/AllPackages/SinglePackageDetails/BookingForm";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           path: "/PackageDetails/:id",
           element: <SinglePackageDetails></SinglePackageDetails>,
           loader: ({params})=> fetch(`http://localhost:5000/allplace/${params.id}`)
+        },
+        {
+          path:"/bookingform",
+          element: <BookingForm></BookingForm>
         }
       ]
     },
