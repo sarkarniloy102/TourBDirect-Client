@@ -8,9 +8,10 @@ import TourGuides from './MeetOurTourGuides/TourGuides';
 
 const Tourism = () => {
     return (
-        <div className=" bg-slate-900 py-8 my-10">
+        <div className="  py-8 my-7 rounded-lg px-5">
             <div className="container mx-auto">
                 <h2 className="text-4xl font-bold mb-4 text-center">Tourism and Travel Guide Section</h2>
+                <hr className=" border-gray-400" />
                 <Tabs>
                     <TabList className="flex mb-6">
                         <Tab className="border-b-2 border-transparent hover:border-blue-500 text-gray-600 hover:text-blue-500 py-2 px-4 cursor-pointer">Overview</Tab>

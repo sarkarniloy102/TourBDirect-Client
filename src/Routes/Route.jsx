@@ -10,6 +10,7 @@ import GuideProfile from "../Page/Home/Tourism/MeetOurTourGuides/GuideProfile";
 import Bookings from "../Page/AllPackages/SinglePackageDetails/MyBookings/Bookings";
 import ContactUs from "../Components/ContactUs/ContactUs";
 import AboutUs from "../Components/AboutUs/AboutUs";
+import Blogs from "../Components/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/aboutus",
         element: <AboutUs></AboutUs>
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>
       },
       {
         path: "/allpackages",
