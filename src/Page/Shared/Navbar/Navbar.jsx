@@ -19,7 +19,7 @@ const Navbar = () => {
 
         </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,7 +40,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn ml-16">Dashboard</div>
+                            <div tabIndex={0} role="button" className=" ml-16">Dashboard</div>
                             <div tabIndex={0} className=" dropdown-content z-[5] w-40 card card-compact  shadow bg-primary text-primary-content">
                                 <div className="card-body ">
                                     <div className="text-lg font-bold flex flex-col">
