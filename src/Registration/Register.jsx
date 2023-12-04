@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -14,23 +15,32 @@ const Register = () => {
         const password = form.password.value;
         const photourl = form.photourl.value;
         console.log(name, email, password, photourl)
+        const userDetails = {
+            Name: name,
+            Email: email,
+        };
 
-
-        createUser(email,password)
+        createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                updateUserProfile(name,photourl)
+                updateUserProfile(name, photourl)
                     .then(() => {
+                        axios.post('http://localhost:5000/Users', userDetails, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                        })
                         console.log('user profile info updated')
                         // reset();
                         Swal.fire({
-                            position: 'top-end',
+                            position: 'center',
                             icon: 'success',
-                            title: 'User created successfully.',
+                            title: 'Registered successfully.',
                             showConfirmButton: false,
                             timer: 1500
                         });
+
                         navigate('/');
 
                     })
