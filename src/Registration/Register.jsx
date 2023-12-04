@@ -1,27 +1,42 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-
+import Swal from 'sweetalert2'
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
-
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photourl =form.photourl.value;
-        console.log(name, email, password,photourl)
+        const photourl = form.photourl.value;
+        console.log(name, email, password, photourl)
 
 
-        createUser(email, password)
+        createUser(email,password)
             .then(result => {
-                const user = result.user;
-                console.log('created user', user)
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(name,photourl)
+                    .then(() => {
+                        console.log('user profile info updated')
+                        // reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error))
+
 
     }
     return (
@@ -33,19 +48,19 @@ const Register = () => {
                         <h1 className="text-2xl font-bold text-center">Register Here</h1>
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">Name</label>
-                            <input  type="text" placeholder="name" name="name" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
+                            <input type="text" placeholder="name" name="name" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">Email</label>
-                            <input  type="email" placeholder="Email" name="email" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
+                            <input type="email" placeholder="Email" name="email" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">Password</label>
-                            <input  type="password" placeholder="password" name="password" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
+                            <input type="password" placeholder="password" name="password" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
                         </div>
                         <div className="col-span-full sm:col-span-3">
                             <label className="text-sm">PhotoURL</label>
-                            <input  type="text" placeholder="https://" name="photourl" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
+                            <input type="text" placeholder="https://" name="photourl" className="w-full rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" />
                         </div>
                         <input className="w-full px-8 py-3 font-semibold rounded-md bg-violet-400 text-gray-900 cursor-pointer" type="submit" value="Sign Up" />
                         <p className="text-xs text-center sm:text-gray-400 ">Do not have an account?

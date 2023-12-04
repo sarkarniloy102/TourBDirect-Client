@@ -11,6 +11,8 @@ import Bookings from "../Page/AllPackages/SinglePackageDetails/MyBookings/Bookin
 import ContactUs from "../Components/ContactUs/ContactUs";
 import AboutUs from "../Components/AboutUs/AboutUs";
 import Blogs from "../Components/Blogs/Blogs";
+import SpecificPackage from "../Page/Home/TourType/SpecificPackage/SpecificPackage";
+
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,11 @@ const router = createBrowserRouter([
       {
         path: "/mybookings",
         element: <Bookings></Bookings>
+      },
+      {
+        path: "/place/:type",
+        element: <SpecificPackage></SpecificPackage>,
+        loader: ({ params }) => fetch(`http://localhost:5000/place/${params.type}`)
       }
     ]
   },
