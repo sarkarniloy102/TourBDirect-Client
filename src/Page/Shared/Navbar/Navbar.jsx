@@ -49,6 +49,7 @@ const Navbar = () => {
                                     </div>
 
                                     <Link to={"/mybookings"} className="text-lg font-medium ">My Bookings</Link>
+                                    <Link to={"/mywishlist"} className="text-lg font-medium ">WishList</Link>
                                     <Link className="text-lg font-medium" onClick={handleLogOut} >LogOut</Link>
 
                                 </div>

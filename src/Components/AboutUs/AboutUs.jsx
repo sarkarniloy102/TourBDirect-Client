@@ -2,7 +2,7 @@
 
 const AboutUs = () => {
     return (
-        <section className="dark:bg-gray-800 dark:text-gray-100">
+        <section className="text-g">
             <div className="container flex flex-col items-center p-4 mx-auto md:p-8">
                 <h1 className="text-3xl font-bold leadi text-center sm:text-4xl">About TourBDirect</h1>
                 <div className="container flex flex-col text-lg">

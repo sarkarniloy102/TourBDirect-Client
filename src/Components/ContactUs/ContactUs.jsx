@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2'
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -25,16 +25,16 @@ const ContactUs = () => {
       message: '',
     });
     Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Your message has been saved, we will mail you soon",
-        showConfirmButton: false,
-        timer: 1500
-      });
+      position: "center",
+      icon: "success",
+      title: "Your message has been saved, we will mail you soon",
+      showConfirmButton: false,
+      timer: 1500
+    });
   };
 
   return (
-    <div className="container p-4 mx-auto">
+    <div className="container p-4  mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-600">

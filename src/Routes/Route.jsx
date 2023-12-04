@@ -12,6 +12,7 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 import AboutUs from "../Components/AboutUs/AboutUs";
 import Blogs from "../Components/Blogs/Blogs";
 import SpecificPackage from "../Page/Home/TourType/SpecificPackage/SpecificPackage";
+import MyWishList from "../Components/MyWishList/MyWishList";
 
 
 const router = createBrowserRouter([
@@ -69,6 +70,11 @@ const router = createBrowserRouter([
         path: "/place/:type",
         element: <SpecificPackage></SpecificPackage>,
         loader: ({ params }) => fetch(`http://localhost:5000/place/${params.type}`)
+      },
+      {
+        path: "/mywishlist",
+        element: <MyWishList></MyWishList>,
+        loader: ()=> fetch('http://localhost:5000/mywishlist')
       }
     ]
   },
