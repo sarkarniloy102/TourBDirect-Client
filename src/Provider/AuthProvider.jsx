@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider,  signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 
@@ -34,18 +34,29 @@ const AuthProvider = ({ children }) => {
             displayName: name, photoURL: photo
         });
     }
-    
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            console.log('onAuthStateChanged callback triggered:', currentUser);
             setUser(currentUser);
-            console.log('current user', currentUser);
             setLoading(false);
+
+            if (currentUser && currentUser.email) {
+                localStorage.setItem('user', JSON.stringify(currentUser));
+            }
+            else {
+                // User has logged out, remove 'user' from localStorage
+                localStorage.removeItem('user');
+            }
         });
+
         return () => {
             return unsubscribe();
         }
-    }, [])
+    }, []);
+
+    console.log(user);
 
     const authInfo = {
         user,

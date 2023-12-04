@@ -9,7 +9,7 @@ const PackageCard = ({ Package }) => {
   console.log(type, title);
 
   const handleWishlist = () => {
-    axios.post('http://localhost:5000/mywishlist', Package, {
+    axios.post('https://tour-bd-irect-server.vercel.app/mywishlist', Package, {
       headers: {
         'Content-Type': 'application/json',
       },

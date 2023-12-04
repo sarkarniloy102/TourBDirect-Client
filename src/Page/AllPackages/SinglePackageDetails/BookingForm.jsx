@@ -77,7 +77,7 @@ const BookingForm = () => {
             confirmButtonText: "Confirm your Booking"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post('http://localhost:5000/mybookings', touristDetails, {
+                axios.post('https://tour-bd-irect-server.vercel.app/mybookings', touristDetails, {
                     headers: {
                         'Content-Type': 'application/json',
                     },

@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const AboutUs = () => {
+    const {user}= useContext(AuthContext);
+    console.log(user);
     return (
         <section className="text-g">
             <div className="container flex flex-col items-center p-4 mx-auto md:p-8">

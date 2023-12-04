@@ -40,14 +40,14 @@ const Navbar = () => {
                 {
                     user ? <>
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className=" ml-16">Dashboard</div>
+                            <div tabIndex={0} role="button" className=" ml-16">Profile</div>
                             <div tabIndex={0} className=" dropdown-content z-[5] w-40 card card-compact  shadow bg-primary text-primary-content">
                                 <div className="card-body ">
                                     <div className="text-lg font-bold flex flex-col">
                                         <Link>Profile</Link>
                                         <span className="text-xs">{user?.displayName}</span>
                                     </div>
-
+                                    <Link to={"/dashboard"} className="text-lg font-medium ">Dashboard</Link>
                                     <Link to={"/mybookings"} className="text-lg font-medium ">My Bookings</Link>
                                     <Link to={"/mywishlist"} className="text-lg font-medium ">WishList</Link>
                                     <Link className="text-lg font-medium" onClick={handleLogOut} >LogOut</Link>

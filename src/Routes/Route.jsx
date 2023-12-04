@@ -13,6 +13,8 @@ import AboutUs from "../Components/AboutUs/AboutUs";
 import Blogs from "../Components/Blogs/Blogs";
 import SpecificPackage from "../Page/Home/TourType/SpecificPackage/SpecificPackage";
 import MyWishList from "../Components/MyWishList/MyWishList";
+import Dashboard from "../Layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -50,33 +52,73 @@ const router = createBrowserRouter([
       },
       {
         path: "/PackageDetails/:id",
-        element: <SinglePackageDetails></SinglePackageDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allplace/${params.id}`)
+        element: <PrivateRoute><SinglePackageDetails></SinglePackageDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://tour-bd-irect-server.vercel.app/allplace/${params.id}`)
       },
       {
         path: "/bookingform",
-        element: <BookingForm></BookingForm>
+        element: <PrivateRoute><BookingForm></BookingForm></PrivateRoute>
       },
       {
         path: "/guideProfile/:id",
-        element: <GuideProfile></GuideProfile>,
-        loader: ({ params }) => fetch(`http://localhost:5000/tourguides/${params.id}`)
+        element: <PrivateRoute><GuideProfile></GuideProfile></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://tour-bd-irect-server.vercel.app/tourguides/${params.id}`)
       },
       {
         path: "/mybookings",
-        element: <Bookings></Bookings>
+        element: <PrivateRoute><Bookings></Bookings></PrivateRoute>
       },
       {
         path: "/place/:type",
         element: <SpecificPackage></SpecificPackage>,
-        loader: ({ params }) => fetch(`http://localhost:5000/place/${params.type}`)
+        loader: ({ params }) => fetch(`https://tour-bd-irect-server.vercel.app/place/${params.type}`)
       },
       {
         path: "/mywishlist",
         element: <MyWishList></MyWishList>,
-        loader: ()=> fetch('http://localhost:5000/mywishlist')
+
       }
     ]
   },
+  {
+    path: '/dashboard', 
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      // {
+      //   path: '/dashboard/adminHome',
+      //   element: <PrivateRoutes> <AdminHome></AdminHome></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/add-a-camp',
+      //   element: <PrivateRoutes><AddCampPage></AddCampPage></PrivateRoutes>
+      // },
+
+      // {
+      //   path: '/dashboard/manageCamps',
+      //   element: <PrivateRoutes><ManageCamps></ManageCamps></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/userHome',
+      //   element: <PrivateRoutes><UserHome></UserHome></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/participant-profile',
+      //   element: <PrivateRoutes><ParticipantProfilePage></ParticipantProfilePage></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/healthcareProfessionalHome',
+      //   element: <PrivateRoutes><HealthcareProfessionalHome></HealthcareProfessionalHome></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/professional-profile',
+      //   element: <PrivateRoutes><HealthcareProfessionalProfilePage></HealthcareProfessionalProfilePage></PrivateRoutes>
+      // },
+      // {
+      //   path: '/dashboard/registered-camps',
+      //   element: <PrivateRoutes><RegisteredCamps></RegisteredCamps></PrivateRoutes>
+      // }
+
+    ]
+  }
 ]);
 export default router;

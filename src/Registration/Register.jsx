@@ -26,7 +26,7 @@ const Register = () => {
                 console.log(loggedUser);
                 updateUserProfile(name, photourl)
                     .then(() => {
-                        axios.post('http://localhost:5000/Users', userDetails, {
+                        axios.post('https://tour-bd-irect-server.vercel.app/Users', userDetails, {
                             headers: {
                                 'Content-Type': 'application/json',
                             },

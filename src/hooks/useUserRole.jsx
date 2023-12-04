@@ -1,43 +1,54 @@
-import { useContext } from 'react';
-import { useQuery } from "@tanstack/react-query";
-
-
-import { AuthContext } from '../Provider/AuthProvider';
-import useAxiosSecure from './useAxiosSecure';
+import { useState, useEffect } from 'react';
+import useAxiosSecure from "./useAxiosSecure";
+import useAuth from "./useAuth";
 
 const useUserRole = () => {
-    const { user } = useContext(AuthContext);
-    console.log(user)
+    const { user } = useAuth();
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const currentUser = user || storedUser;
+    console.log(currentUser.email);
+
     const axiosSecure = useAxiosSecure();
-    const { data: userType, isLoading, isError } = useQuery({
-        queryKey: [user?.email, 'userType'],
-        queryFn: async () => {
-            const res = await axiosSecure.get(`Users/${user.email}`);
-            return res.data;
+
+    const [userType, setUserType] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    const [isError, setError] = useState(false);
+
+    useEffect(() => {
+        const fetchUserRole = async () => {
+            try {
+                const res = await axiosSecure.get(`/users/role/${currentUser.email}`);
+                console.log(res);
+                setUserType(res.data);
+            } catch (error) {
+                setError(true);
+                console.error("Error fetching user role", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (currentUser) {
+            fetchUserRole();
         }
-    });
+
+    }, [axiosSecure, currentUser]);
+    console.log( 'current user is',userType);
 
     if (isLoading) {
-        // If the data is still loading
         return ["Loading", isLoading];
     } else if (isError) {
-        // Handle error state
-        console.error("Error fetching user role");
         return ["Error", isLoading];
     } else if (userType && userType.role) {
-        // Check the role and return the corresponding string
         const { role } = userType;
-        if (role === "Organizer") {
-            return ["Organizer", isLoading];
-        } else if (role === "HealthcareProfessional") {
-            return ["HealthcareProfessional", isLoading];
-        } else {
-            return ["Participant", isLoading];
+        if (role === "admin") {
+            return ["admin", isLoading];
+        } else if (role === "tourguide") {
+            return ["tourguide", isLoading];
         }
     }
 
-    // If none of the conditions are met, it simply returns without a default value
-    return ["Participant", isLoading, userType];
+    return ["user", isLoading, userType];
 };
 
 export default useUserRole;

@@ -1,16 +1,61 @@
-import { Link, useLoaderData } from "react-router-dom";
-import PackageCard from "../../Page/Home/Tourism/OurPackages/PackageCard";
-
+import { Link } from "react-router-dom";
+import WishlistCard from "./WishlistCard";
+import Swal from 'sweetalert2';
+import { useEffect, useState } from 'react';
+import axios from "axios";
 
 const MyWishList = () => {
-    const wishlists = useLoaderData();
+
+    const [wishlists, setwishlists] = useState([]);
+    useEffect(() => {
+        axios.get('https://tour-bd-irect-server.vercel.app/mywishlist')
+            .then(res => {
+                setwishlists(res.data);
+                console.log(res.data);
+            });
+    }, []);
+
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://tour-bd-irect-server.vercel.app/mywishlist/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remaining = wishlists.filter(wishlist => wishlist._id !== id);
+                            setwishlists(remaining);
+                        }
+                    })
+
+            }
+        });
+    }
+
     return (
         <div>
             <div className="px-4 grid grid-cols-3 gap-5">
                 {
-                    wishlists.map((Package, idx) => <PackageCard key={idx}
+                    wishlists?.map((Package, idx) => <WishlistCard key={idx}
                         Package={Package}
-                    ></PackageCard>)
+                        handleDelete={handleDelete}
+                    ></WishlistCard>)
                 }
 
             </div>
