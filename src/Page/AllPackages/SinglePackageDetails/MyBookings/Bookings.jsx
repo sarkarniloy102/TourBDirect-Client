@@ -1,9 +1,11 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css';
 import usePackage from '../../../../hooks/usePackage';
+import useAuth from '../../../../hooks/useAuth';
 
 const Bookings = () => {
+  const { user } = useAuth();
   const book = 'mybookings';
   const [booking] = usePackage(book);
   const [bookings, setBookings] = useState([]);
@@ -11,6 +13,10 @@ const Bookings = () => {
   useEffect(() => {
     setBookings(booking);
   }, [booking]);
+  console.log(user.email,booking.Email)
+  // if (user.email !== booking.Email) {
+  //   return;
+  // }
 
   const handlePay = (index) => {
     const updatedBookings = [...bookings];
@@ -40,7 +46,7 @@ const Bookings = () => {
           </colgroup>
           <thead>
             <tr className="dark:bg-gray-700">
-              <th className="p-3">A-Z</th>
+              <th className="p-3">Tourist</th>
               <th className="p-3">Package</th>
               <th className="p-3">Tour Guide</th>
               <th className="p-3">Tour Date</th>
@@ -49,12 +55,12 @@ const Bookings = () => {
               <th className="p-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="border-b dark:bg-gray-900 dark:border-gray-700">
+          <tbody className="border-b  border-gray-700">
             {bookings.map((booking, index) => (
               <tr key={index} className="border-b dark:bg-gray-900 dark:border-gray-700">
-                <td className="px-3 text-2xl font-medium dark:text-gray-400">A</td>
+                <td className="px-3 ">{booking.Name}</td>
                 <td className="px-3 py-2">{booking.type}</td>
-                <td className="px-3 py-2">{booking.tourGuide}</td>
+                <td className="px-3 py-2">{booking.tourGuide} {booking.Email}</td>
                 <td className="px-3 py-2">{booking.tourDate}</td>
                 <td className="px-3 py-2">{booking.Price}</td>
                 <td className="px-3 py-2">{booking.status}</td>
@@ -63,19 +69,19 @@ const Bookings = () => {
                     <>
                       <button
                         onClick={() => handleCancel(index)}
-                        className="p-1 rounded-full dark:text-gray-600 hover:dark:bg-gray-700 focus:dark:bg-gray-700"
+                        className="p-1 rounded-full text-gray-600 hover:bg-gray-700 focus:dark:bg-gray-700"
                       >
                         Cancel
                       </button>
                       <button
                         onClick={() => handlePay(index)}
                         disabled={booking.status !== 'In Review'}
-                        className="p-1 rounded-full dark:text-gray-600 hover:dark:bg-gray-700 focus:dark:bg-gray-700"
+                        className="p-1 rounded-full text-gray-600 hover:bg-gray-700 focus:bg-gray-700"
                       >
                         Pay
                       </button>
                       <button
-                        
+
                         className="p-1 rounded-full dark:text-gray-600 hover:dark:bg-gray-700 focus:dark:bg-gray-700"
                       >
                         Apply

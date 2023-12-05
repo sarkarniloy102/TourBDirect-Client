@@ -61,7 +61,7 @@ const Dashboard = () => {
                     className="flex items-center py-2 px-3 rounded hover:bg-blue-300 transition-colors duration-200"
                 >
                     <FaHome className="mr-3" />
-                    healthcareProfessionalHome
+                    My Assigned Tours
                 </NavLink>
             </li>
             <li>
@@ -69,7 +69,7 @@ const Dashboard = () => {
                     to="/dashboard/professional-profile"
                     className="flex items-center py-2 px-3 rounded hover:bg-blue-300 transition-colors duration-200"
                 >
-                    <FaRegComments className="mr-3" /> Profile Management
+                    <FaRegComments className="mr-3" /> My Profile
                 </NavLink>
             </li>
         </>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                     className="flex items-center py-2 px-3 rounded hover:bg-blue-300 transition-colors duration-200"
                 >
                     <ImProfile className="mr-3" />
-                    Profile Management
+                    Update Profile
                 </NavLink>
             </li>
             <li>
@@ -101,7 +101,7 @@ const Dashboard = () => {
                     className="flex items-center py-2 px-3 rounded hover:bg-blue-300 transition-colors duration-200"
                 >
                     <FaRegRegistered className="mr-3" />
-                    Registered Camps
+                    Booked Package
                 </NavLink>
             </li>
         </>
@@ -116,10 +116,10 @@ const Dashboard = () => {
                         <div className="text-2xl font-bold mb-2">Dashboard</div>
                     </div>
                     <ul className="space-y-2">
-                        {role === "Organizer" && AdminNavLinks}
-                        {role === "HealthcareProfessional" &&
+                        {role === "admin" && AdminNavLinks}
+                        {role === "tourguide" &&
                             TourGuideNavLinks}
-                        {role === "Participant" && UserNavLinks}
+                        {role === "user" && UserNavLinks}
                         <hr className="my-4 border-t border-gray-300" />
                         <li>
                             <NavLink

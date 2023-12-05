@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -40,7 +42,7 @@ const Navbar = () => {
                 {
                     user ? <>
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className=" ml-16">Profile</div>
+                            <div tabIndex={0} role="button" className=" ml-16 flex items-center mr-4 gap-3"><FaUserCircle className="text-2xl" />Profile</div>
                             <div tabIndex={0} className=" dropdown-content z-[5] w-40 card card-compact  shadow bg-primary text-primary-content">
                                 <div className="card-body ">
                                     <div className="text-lg font-bold flex flex-col">

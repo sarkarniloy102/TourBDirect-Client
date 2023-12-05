@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from 'sweetalert2'
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -39,12 +40,27 @@ const Register = () => {
                             title: 'Registered successfully.',
                             showConfirmButton: false,
                             timer: 1500
-                        });
+                        })
+
 
                         navigate('/');
 
                     })
                     .catch(error => console.log(error))
+            })
+            .catch(error => {
+                console.log(error.message)
+                toast.error(error.message, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                });
+                
             })
 
 
@@ -76,6 +92,7 @@ const Register = () => {
                         <p className="text-xs text-center sm:text-gray-400 ">Do not have an account?
                             <Link to={'/login'} rel="noopener noreferrer" href="#" className="underline ml-2 text-gray-100">Login</Link>
                         </p>
+                        <ToastContainer></ToastContainer>
                     </div>
                 </form>
             </section>

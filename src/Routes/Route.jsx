@@ -15,12 +15,14 @@ import SpecificPackage from "../Page/Home/TourType/SpecificPackage/SpecificPacka
 import MyWishList from "../Components/MyWishList/MyWishList";
 import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import ErrorElement from "../Components/ErrorElement/ErrorElement";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         path: "/",

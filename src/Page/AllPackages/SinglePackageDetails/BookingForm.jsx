@@ -5,8 +5,10 @@ import usePackage from '../../../hooks/usePackage';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 const BookingForm = () => {
+    
     const tourguide = 'tourguides'
     const [tourGuides] = usePackage(tourguide);
+    
 
     const travelplace = 'allplace';
     const [travelPlaces] = usePackage(travelplace);
@@ -125,27 +127,27 @@ const BookingForm = () => {
                         {/*tourist name */}
                         <div className="mb-4">
                             <label className="block mb-2">Name of the tourist</label>
-                            <input type="text" name="Name" value={touristDetails.Name} onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
+                            <input type="text" name="Name" value={touristDetails.Name} required onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
                         </div>
                         {/* tourist email */}
                         <div className="mb-4">
                             <label className="block mb-2">Email of the tourist</label>
-                            <input type="email" name="Email" value={touristDetails.Email} onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
+                            <input type="email" placeholder='login email' name="Email" required onChange={handleInputChange} value={touristDetails.Email}  className="border border-gray-300 rounded-md p-2 w-full" />
                         </div>
                         {/* tourist image */}
                         <div className="mb-4">
                             <label className="block mb-2">Image of the tourist</label>
-                            <input type="text" name="Image" value={touristDetails.Image} onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
+                            <input type="text" name="Image" value={touristDetails.Image} required onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
                         </div>
                         {/* Add similar input fields for other details */}
                         <div className="mb-4 flex flex-col lg:flex-row">
                             <div className='w-1/2'>
                                 <label className="block mb-2">Tour Date</label>
-                                <DatePicker selected={tourDate} onChange={handleDateChange} className="border border-gray-300 rounded-md p-2 " />
+                                <DatePicker selected={tourDate} onChange={handleDateChange} required className="border border-gray-300 rounded-md p-2 " />
                             </div>
                             <div className="mb-4">
                                 <label className="block mb-2">Price of the tour(BDT)</label>
-                                <input type="number" name="Price" value={touristDetails.Price} onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
+                                <input type="number" name="Price" value={touristDetails.Price} required onChange={handleInputChange} className="border border-gray-300 rounded-md p-2 w-full" />
                             </div>
 
                         </div>
@@ -153,7 +155,7 @@ const BookingForm = () => {
                             {/* category type */}
                             <div className="mb-4 w-1/2">
                                 <label className="block mb-2">Tour Category</label>
-                                <select value={type} onChange={handleTypeChange} className="border border-gray-300 rounded-md p-2 w-full">
+                                <select value={type} onChange={handleTypeChange} required className="border border-gray-300 rounded-md p-2 w-full">
                                     <option value="">Select Tour Category</option>
                                     {/* Populate dropdown options with tour guide names */}
 
@@ -177,7 +179,7 @@ const BookingForm = () => {
                             {/* category title */}
                             <div className="mb-4">
                                 <label className="block mb-2">Tour Place</label>
-                                <select value={title} onChange={handleTitleChange} className="border border-gray-300 rounded-md p-2 w-full">
+                                <select value={title} onChange={handleTitleChange} required className="border border-gray-300 rounded-md p-2 w-full">
                                     <option value="">Select Tour Place</option>
                                     {/* Populate dropdown options with tour guide names */}
                                     {
@@ -193,7 +195,7 @@ const BookingForm = () => {
                         {/* tour guide */}
                         <div className="mb-4">
                             <label className="block mb-2">Tour Guide Name</label>
-                            <select value={tourGuide} onChange={handleTourGuideChange} className="border border-gray-300 rounded-md p-2 w-full">
+                            <select value={tourGuide} onChange={handleTourGuideChange} required className="border border-gray-300 rounded-md p-2 w-full">
                                 <option value="">Select Tour Guide</option>
                                 {/* Populate dropdown options with tour guide names */}
                                 {

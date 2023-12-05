@@ -10,7 +10,7 @@ const OurPackages = () => {
 
     return (
         <div>
-            <div className="px-4 grid grid-cols-3 gap-5">
+            <div className="px-4 grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {
                     Packages.map((Package, idx) => <PackageCard key={idx}
                         Package={Package}
